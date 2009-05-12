@@ -3,11 +3,6 @@ require 'rubygems'
 gem 'httparty', '0.4.3'
 require 'httparty'
 
-
-# 'http://images.pageglimpse.com/v1/thumbnails/request?url=http://google.com&size=medium&devkey=ec0ccd30be1b39393d19cb5f410d26df'
-# 'http://images.pageglimpse.com/v1/thumbnails/exists?url=http://google.com&size=medium&devkey=ec0ccd30be1b39393d19cb5f410d26df'
-# 'http://images.pageglimpse.com/v1/thumbnails?url=http://google.com&size=medium&devkey=ec0ccd30be1b39393d19cb5f410d26df'
-
 class PageGlimse
   
   InvalidAPIKeyError = Class.new(StandardError)
@@ -45,6 +40,7 @@ class PageGlimse
     @devkey = devkey
   end
   
+  # Get single thumbnail.
   def thumbnail(url, options = {})
     options = defaults.merge(options)
     @url = url
@@ -59,6 +55,7 @@ class PageGlimse
   end
   alias :thumbnails :thumbnail
   
+  # Export single thumbnail into a file.
   def save!(url, path, options = {})
     begin
       data = thumbnail(url, options)
@@ -72,6 +69,7 @@ class PageGlimse
     end
   end
   
+  # Request URL to be captured.
   def request!(url, options = {})
     options = defaults.merge(options)
     @url = url
@@ -81,6 +79,7 @@ class PageGlimse
     handle_response(response.code)
   end
   
+  # Check if a thumbnail exists
   def exists?(url, options = {})
     options = defaults.merge(options)
     @url = url
@@ -94,6 +93,7 @@ class PageGlimse
   
   private
   
+  # Return value based on response code.
   def handle_response(response_code)
     case response_code.to_i
     when 200 then
@@ -105,15 +105,18 @@ class PageGlimse
     end
   end
   
+  # Validate/Format value for "root"-param.
   def valid_root_value(root)
     root ||= true
     (root == true) ? :yes : :no
   end
   
+  # Validate/Format value for "size"-param.
   def valid_size_value(size)
     PG_VALID_SIZE_VALUES.include?(size.to_sym) ? size : :medium
   end
   
+  # Generate API query URL base on specified args.
   def generate_url(*args)
     action = args.join('/').to_sym
     params = []

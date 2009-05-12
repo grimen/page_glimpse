@@ -8,11 +8,11 @@ h2. What Is PageGlimpse?
 
 h2. Installation
 
-Install the dependencies:
+Dependency:
 
 <pre>sudo gem install jnunemaker-httparty</pre>
 
-Install the PageGlimse gem:
+Gem:
 
 <pre>sudo gem install grimen-page_glimpse</pre>
 
@@ -22,7 +22,7 @@ You'll need a API key, which you can get for *free* here:
 
 "http://pageglimpse.com/signup":http://pageglimpse.com/signup
 
-h2. Usage/Example
+h2. Usage/Examples
 
 h3. Initialize
 
@@ -32,16 +32,20 @@ h3. Tell PageGlimpse to generate a webpage thumbnail
 
 <pre>snapper.request!('http://mypage.com') # => true/false</pre>
 
-h3. Thumbnail exists for this page?
+h3. Check if thumbnail exists for a webpage
 
 <pre>snapper.exists?('http://techcrunch.com', :size => :medium) # => true/false</pre>
 
-h3. Get thumbnail (PNG image)
+h3. Get thumbnail (PNG image) for a webpage
 
 <pre>snapper.thumbnail('http://techcrunch.com', :size => :small) # => [raw PNG data]</pre>
 
-h3. Save thumbnail (PNG image)
+h3. Save thumbnail into a file (PNG image) for a webpage
 
 <pre>snapper.save!('http://techcrunch.com', :size => :large) # => true/false</pre>
+
+h3. More?
+
+Yes, all the PageGlimpse API options are supported but not documented in this README right now. Peep the code and read more about the options: "http://www.pageglimpse.com/features/api":http://www.pageglimpse.com/features/api.
 
 Copyright (c) Jonas Grimfelt, released under the MIT-license.
