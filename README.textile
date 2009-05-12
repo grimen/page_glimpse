@@ -1,0 +1,47 @@
+h1. PAGE_GLIMPSE
+
+A little Ruby wrapper for the *PageGlimpse API* for generating webpage snapshots - glimpses - in a snap.
+
+h2. What Is PageGlimpse?
+
+"http://pageglimpse.com":http://pageglimpse.com
+
+h2. Installation
+
+Install the dependencies:
+
+<pre>sudo gem install jnunemaker-httparty</pre>
+
+Install the PageGlimse gem:
+
+<pre>sudo gem install grimen-page_glimpse</pre>
+
+h2. PageGlimpse API Key
+
+You'll need a API key, which you can get for *free* here:
+
+"http://pageglimpse.com/signup":http://pageglimpse.com/signup
+
+h2. Usage/Example
+
+h3. Initialize
+
+<pre>snapper = PageGlimse.new('ec0ccd....26df') # => nil</pre>
+
+h3. Tell PageGlimpse to generate a webpage thumbnail
+
+<pre>snapper.request!('http://mypage.com') # => true/false</pre>
+
+h3. Thumbnail exists for this page?
+
+<pre>snapper.exists?('http://techcrunch.com', :size => :medium) # => true/false</pre>
+
+h3. Get thumbnail (PNG image)
+
+<pre>snapper.thumbnail('http://techcrunch.com', :size => :small) # => [raw PNG data]</pre>
+
+h3. Save thumbnail (PNG image)
+
+<pre>snapper.save!('http://techcrunch.com', :size => :large) # => true/false</pre>
+
+Copyright (c) Jonas Grimfelt, released under the MIT-license.
