@@ -40,8 +40,8 @@ class PageGlimse
     @devkey = devkey
   end
   
-  # Get single thumbnail.
-  def thumbnail(url, options = {})
+  # Get thumbnail URL for linking.
+  def thumbnail_url(url, options = {})
     options = defaults.merge(options)
     @url = url
     @size = valid_size_value(options[:size])
@@ -49,13 +49,17 @@ class PageGlimse
     @nothumb = options[:nothumb]
     
     query_url = generate_url('thumbnails')
-    response = self.class.get(query_url)
+  end
+  
+  # Get single thumbnail image (PNG).
+  def thumbnail(url, options = {})
+    response = self.class.get(thumbnail_url)
     handle_response(response)
     response.body
   end
   alias :thumbnails :thumbnail
   
-  # Export single thumbnail into a file.
+  # Export single thumbnail into a image file (PNG).
   def save!(url, path, options = {})
     begin
       data = thumbnail(url, options)
@@ -125,7 +129,8 @@ class PageGlimse
     params << "root=#{@root}" if ACTION_PARAMS[action].include?(:thumbnail)
     params << "nothumb=#{@nothumb}" if ACTION_PARAMS[action].include?(:nothumb) && @nothumb && !@nothumb.empty?
     params << "devkey=#{@devkey}" if ACTION_PARAMS[action].include?(:devkey)
-    "/#{action}?#{params.join('&')}"
+    query_url = "/#{action}?#{params.join('&')}"
+    @thumbnail_url = 
   end
   
 end
