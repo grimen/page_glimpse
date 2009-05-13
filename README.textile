@@ -24,28 +24,34 @@ You'll need a API key, which you can get for *free* here:
 
 h2. Usage/Examples
 
-h3. Initialize
+Initialize:
 
 <pre>snapper = PageGlimse.new('ec0ccd....26df') # => nil</pre>
 
-h3. Tell PageGlimpse to generate a webpage thumbnail
+Tell PageGlimpse to generate a webpage thumbnail:
 
 <pre>snapper.request!('http://mypage.com') # => true/false</pre>
 
-h3. Check if thumbnail exists for a webpage
+Check if thumbnail exists for a webpage:
 
 <pre>snapper.exists?('http://techcrunch.com', :size => :medium) # => true/false</pre>
 
-h3. Get thumbnail (PNG image) for a webpage
+Get direct URL for a cached webpage thumbnail image:
+
+<pre>snapper.thumbnail_url('http://techcrunch.com', :size => :large) # => 'http://images.pageglimpse.com/v1/thumbnails?url=http://techcrunch.com&size=large&devkey=ec0ccd....26df'</pre>
+
+Get thumbnail (PNG image) for a webpage:
 
 <pre>snapper.thumbnail('http://techcrunch.com', :size => :small) # => [raw PNG data]</pre>
 
-h3. Save thumbnail into a file (PNG image) for a webpage
+Save thumbnail into a file (PNG image) for a webpage:
 
 <pre>snapper.save!('http://techcrunch.com', :size => :large) # => true/false</pre>
 
-h3. More?
+h2. More?
 
 Yes, all the PageGlimpse API options are supported but not documented in this README right now. Peep the code and read more about the options: "http://www.pageglimpse.com/features/api":http://www.pageglimpse.com/features/api.
+
+h2. License
 
 Copyright (c) Jonas Grimfelt, released under the MIT-license.
