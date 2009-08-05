@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{page_glimpse}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jonas Grimfelt"]
-  s.date = %q{2009-05-13}
+  s.date = %q{2009-08-05}
   s.description = %q{A little Ruby wrapper for the PageGlimpse API (http://pageglimpse.com) for generating webpage snapshots - glimpses - in a snap.}
   s.email = %q{grimen@gmail.com}
   s.extra_rdoc_files = [
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
     "MIT-LICENSE",
     "README.textile",
     "Rakefile",
-    "lib/page_glimse.rb",
+    "lib/page_glimpse.rb",
     "rails/init.rb",
     "test/page_glimse_test.rb"
   ]
