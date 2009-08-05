@@ -26,7 +26,7 @@ h2. Usage/Examples
 
 Initialize:
 
-<pre>snapper = PageGlimse.new('ec0ccd....26df') # => nil</pre>
+<pre>snapper = PageGlimpse.new('ec0ccd....26df') # => nil</pre>
 
 Tell PageGlimpse to generate a webpage thumbnail:
 

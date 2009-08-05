@@ -1,9 +1,9 @@
 require 'rubygems'
 
-gem 'httparty', '0.4.3'
+gem 'httparty', '0.4.4'
 require 'httparty'
 
-class PageGlimse
+class PageGlimpse
   
   InvalidAPIKeyError = Class.new(StandardError)
   
@@ -53,7 +53,7 @@ class PageGlimse
   
   # Get single thumbnail image (PNG).
   def thumbnail(url, options = {})
-    response = self.class.get(thumbnail_url)
+    response = self.class.get(thumbnail_url(url, options))
     handle_response(response)
     response.body
   end
@@ -130,7 +130,6 @@ class PageGlimse
     params << "nothumb=#{@nothumb}" if ACTION_PARAMS[action].include?(:nothumb) && @nothumb && !@nothumb.empty?
     params << "devkey=#{@devkey}" if ACTION_PARAMS[action].include?(:devkey)
     query_url = "/#{action}?#{params.join('&')}"
-    @thumbnail_url = 
   end
   
 end
