@@ -48,12 +48,12 @@ class PageGlimpse
     @root = valid_root_value(options[:root])
     @nothumb = options[:nothumb]
     
-    query_url = generate_url('thumbnails')
+    query_url = PG_API_URL + generate_url('thumbnails')
   end
   
   # Get single thumbnail image (PNG).
   def thumbnail(url, options = {})
-    response = self.class.get(thumbnail_url(url, options))
+    response = self.class.get(thumbnail_url(url, options).gsub(PG_API_URL, ''))
     handle_response(response)
     response.body
   end
