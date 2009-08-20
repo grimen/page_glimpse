@@ -46,7 +46,7 @@ Get thumbnail (PNG image) for a webpage:
 
 Save thumbnail into a file (PNG image) for a webpage:
 
-<pre>snapper.save!('http://techcrunch.com', :size => :large) # => true/false</pre>
+<pre>snapper.save!('http://techcrunch.com', '/Users/kid_icarus/techcrunch_thumbnail.png', :size => :large) # => true/false</pre>
 
 h2. More?
 
